@@ -53,12 +53,15 @@
 					<ion-row>
 						<ion-col>
 							<ion-button id="calc-btn">
-								<ion-icon slot="start" name="calculator"></ion-icon>
+								<ion-icon
+									slot="start"
+									name="calculator-outline"
+								></ion-icon>
 								Calculate</ion-button
 							>
 						</ion-col>
 						<ion-col>
-							<ion-button id="reset-btn">
+							<ion-button id="reset-btn" fill="outline">
 								<ion-icon
 									slot="start"
 									name="refresh-outline"
@@ -67,8 +70,10 @@
 							>
 						</ion-col>
 					</ion-row>
+					<ion-row>
+						<ion-col id="result"> </ion-col>
+					</ion-row>
 				</ion-grid>
-				<div id="result"></div>
 			</ion-content>
 		</ion-app>
 
