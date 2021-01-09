@@ -11,13 +11,10 @@ import {
 	IonItem,
 	IonLabel,
 	IonInput,
-	IonButton,
-	IonIcon,
-	IonCardContent,
-	IonCard,
 } from '@ionic/react';
 
-import { calculatorOutline, refreshOutline } from 'ionicons/icons';
+import BmiControls from './components/BmiControls';
+import BmiResult from './components/BmiResult';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -57,6 +54,7 @@ const App: React.FC = () => {
 	const resetInputs = () => {
 		heightInputRef.current!.value = '';
 		weightInputRef.current!.value = '';
+		setCalculatedBmi(undefined);
 	};
 	return (
 		<IonApp>
@@ -83,32 +81,10 @@ const App: React.FC = () => {
 							</IonItem>
 						</IonCol>
 					</IonRow>
-					<IonRow>
-						<IonCol className="ion-text-left">
-							<IonButton onClick={calculateBMI}>
-								<IonIcon slot="start" icon={calculatorOutline} />
-								Calculate
-							</IonButton>
-						</IonCol>
-						<IonCol className="ion-text-right">
-							<IonButton onClick={resetInputs}>
-								<IonIcon slot="start" icon={refreshOutline} />
-								Reset
-							</IonButton>
-						</IonCol>
-					</IonRow>
 
-					{calculatedBmi && (
-						<IonRow>
-							<IonCol>
-								<IonCard>
-									<IonCardContent>
-										<h2>{calculatedBmi}</h2>
-									</IonCardContent>
-								</IonCard>
-							</IonCol>
-						</IonRow>
-					)}
+					<BmiControls onCalculate={calculateBMI} onReset={resetInputs} />
+
+					{calculatedBmi && <BmiResult result={calculatedBmi} />}
 				</IonGrid>
 			</IonContent>
 		</IonApp>
